@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { TrendingUp, Users, Building } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const metrics = [
   {
@@ -69,6 +70,7 @@ function AnimatedNumber({ value, decimals = 0 }: { value: number; decimals?: num
 export default function FinancialChart() {
   const chartRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(chartRef, { once: true });
+  const { t } = useLanguage();
 
   const maxRevenue = Math.max(...yearlyData.map((d) => d.revenue));
 
@@ -82,12 +84,12 @@ export default function FinancialChart() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-sm font-medium text-teal uppercase tracking-wider">Financial Stability</span>
+          <span className="text-sm font-medium text-teal uppercase tracking-wider">{t("strength.tab.financial")}</span>
           <h2 className="font-display text-3xl sm:text-4xl font-bold text-navy mt-2 mb-4">
-            Proven Growth & Stability
+            {t("financial.title")}
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Explosive early growth backed by stable enterprise IT/SI projects
+            {t("financial.subtitle")}
           </p>
         </motion.div>
 

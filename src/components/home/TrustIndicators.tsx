@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const clients = [
   { name: "AIA Life", logo: "AIA" },
@@ -15,6 +16,8 @@ const certifications = [
 ];
 
 export default function TrustIndicators() {
+  const { t } = useLanguage();
+
   return (
     <section className="py-16 bg-white border-y border-gray-100">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -26,7 +29,7 @@ export default function TrustIndicators() {
           className="text-center mb-10"
         >
           <p className="text-sm font-medium text-gray-500 uppercase tracking-wider">
-            Trusted by Industry Leaders
+            {t("trust.title")}
           </p>
         </motion.div>
 

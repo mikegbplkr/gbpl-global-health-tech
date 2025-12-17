@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Building2, CheckCircle2 } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const GOOGLE_MAPS_API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY || "";
 
@@ -48,6 +49,7 @@ export default function GlobalNetworkMap() {
   const [useGoogleMap, setUseGoogleMap] = useState(false);
   const mapRef = useRef<HTMLDivElement>(null);
   const [mapLoaded, setMapLoaded] = useState(false);
+  const { t } = useLanguage();
 
   // Initialize Google Maps if API key is available
   useEffect(() => {
@@ -146,12 +148,12 @@ export default function GlobalNetworkMap() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <span className="text-sm font-medium text-teal uppercase tracking-wider">Global Network</span>
+          <span className="text-sm font-medium text-teal uppercase tracking-wider">{t("nav.globalNetwork")}</span>
           <h2 className="font-display text-3xl sm:text-4xl font-bold text-navy mt-2 mb-4">
-            Exclusive PoC Network
+            {t("network.title")}
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            High-credibility partnerships with national and public healthcare institutions across three strategic regions
+            {t("network.subtitle")}
           </p>
           {GOOGLE_MAPS_API_KEY && (
             <button

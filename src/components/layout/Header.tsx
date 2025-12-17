@@ -9,44 +9,45 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
-
-const navigation = [
-  { name: "Home", href: "/" },
-  {
-    name: "About Us",
-    children: [
-      { name: "Company Profile", href: "/about/company" },
-      { name: "Our Strength", href: "/about/strength" },
-    ],
-  },
-  {
-    name: "Solutions",
-    children: [
-      { name: "AI Imaging Platform", href: "/solutions/ai-platform" },
-      { name: "Export Support Services", href: "/solutions/export-services" },
-    ],
-  },
-  {
-    name: "Global Network",
-    children: [
-      { name: "PoC Network Overview", href: "/network/overview" },
-      { name: "Success Stories", href: "/network/success-stories" },
-    ],
-  },
-  {
-    name: "Performance",
-    children: [
-      { name: "Track Record", href: "/performance/track-record" },
-      { name: "Roadmap", href: "/performance/roadmap" },
-    ],
-  },
-  { name: "Contact", href: "/contact" },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [language, setLanguage] = useState<"EN" | "KO">("EN");
+  const { language, setLanguage, t } = useLanguage();
   const location = useLocation();
+
+  const navigation = [
+    { name: t("nav.home"), href: "/" },
+    {
+      name: t("nav.aboutUs"),
+      children: [
+        { name: t("nav.companyProfile"), href: "/about/company" },
+        { name: t("nav.ourStrength"), href: "/about/strength" },
+      ],
+    },
+    {
+      name: t("nav.solutions"),
+      children: [
+        { name: t("nav.aiPlatform"), href: "/solutions/ai-platform" },
+        { name: t("nav.exportServices"), href: "/solutions/export-services" },
+      ],
+    },
+    {
+      name: t("nav.globalNetwork"),
+      children: [
+        { name: t("nav.pocNetwork"), href: "/network/overview" },
+        { name: t("nav.successStories"), href: "/network/success-stories" },
+      ],
+    },
+    {
+      name: t("nav.performance"),
+      children: [
+        { name: t("nav.trackRecord"), href: "/performance/track-record" },
+        { name: t("nav.roadmap"), href: "/performance/roadmap" },
+      ],
+    },
+    { name: t("nav.contact"), href: "/contact" },
+  ];
 
   const isActive = (href: string) => location.pathname === href;
 
@@ -127,16 +128,16 @@ export default function Header() {
                 <ChevronDown className="h-3 w-3" />
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
-                <DropdownMenuItem onClick={() => setLanguage("EN")}>
+                <DropdownMenuItem onSelect={() => setLanguage("EN")}>
                   English
                 </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setLanguage("KO")}>
+                <DropdownMenuItem onSelect={() => setLanguage("KO")}>
                   한국어
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
             <Button asChild className="bg-teal hover:bg-teal-dark text-white">
-              <Link to="/contact">Contact Us</Link>
+              <Link to="/contact">{t("nav.contactUs")}</Link>
             </Button>
           </div>
         </div>
@@ -213,7 +214,7 @@ export default function Header() {
                     </button>
                   </div>
                   <Button asChild className="w-full bg-teal hover:bg-teal-dark text-white">
-                    <Link to="/contact" onClick={() => setMobileMenuOpen(false)}>Contact Us</Link>
+                    <Link to="/contact" onClick={() => setMobileMenuOpen(false)}>{t("nav.contactUs")}</Link>
                   </Button>
                 </div>
               </div>

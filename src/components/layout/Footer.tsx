@@ -1,30 +1,33 @@
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin, Linkedin, Twitter, Youtube } from "lucide-react";
-
-const footerNavigation = {
-  solutions: [
-    { name: "AI Imaging Platform", href: "/solutions/ai-platform" },
-    { name: "Export Support Services", href: "/solutions/export-services" },
-  ],
-  company: [
-    { name: "Company Profile", href: "/about/company" },
-    { name: "Our Strength", href: "/about/strength" },
-    { name: "Track Record", href: "/performance/track-record" },
-    { name: "Roadmap", href: "/performance/roadmap" },
-  ],
-  network: [
-    { name: "PoC Network Overview", href: "/network/overview" },
-    { name: "Success Stories", href: "/network/success-stories" },
-  ],
-};
-
-const certifications = [
-  "Venture Enterprise",
-  "Research Institute",
-  "AI Voucher Supplier",
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Footer() {
+  const { t } = useLanguage();
+
+  const footerNavigation = {
+    solutions: [
+      { name: t("nav.aiPlatform"), href: "/solutions/ai-platform" },
+      { name: t("nav.exportServices"), href: "/solutions/export-services" },
+    ],
+    company: [
+      { name: t("nav.companyProfile"), href: "/about/company" },
+      { name: t("nav.ourStrength"), href: "/about/strength" },
+      { name: t("nav.trackRecord"), href: "/performance/track-record" },
+      { name: t("nav.roadmap"), href: "/performance/roadmap" },
+    ],
+    network: [
+      { name: t("nav.pocNetwork"), href: "/network/overview" },
+      { name: t("nav.successStories"), href: "/network/success-stories" },
+    ],
+  };
+
+  const certifications = [
+    "Venture Enterprise",
+    "Research Institute",
+    "AI Voucher Supplier",
+  ];
+
   return (
     <footer className="bg-navy text-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
@@ -38,13 +41,12 @@ export default function Footer() {
               <span className="font-display font-bold text-xl">GBPL</span>
             </Link>
             <p className="text-gray-300 text-sm leading-relaxed mb-6 max-w-sm">
-              AI-driven, PoC-enabled global market entry platform for health tech SMEs. 
-              Bridging Korean medical innovation with global healthcare markets.
+              {t("footer.description")}
             </p>
             <div className="space-y-3">
               <div className="flex items-center gap-3 text-sm text-gray-300">
                 <MapPin className="h-4 w-4 text-teal flex-shrink-0" />
-                <span>Seoul, South Korea</span>
+                <span>{t("footer.address")}</span>
               </div>
               <div className="flex items-center gap-3 text-sm text-gray-300">
                 <Mail className="h-4 w-4 text-teal flex-shrink-0" />
@@ -64,7 +66,7 @@ export default function Footer() {
           {/* Solutions */}
           <div>
             <h3 className="font-subheading font-semibold text-sm uppercase tracking-wider mb-4">
-              Solutions
+              {t("footer.solutions")}
             </h3>
             <ul className="space-y-3">
               {footerNavigation.solutions.map((item) => (
@@ -83,7 +85,7 @@ export default function Footer() {
           {/* Company */}
           <div>
             <h3 className="font-subheading font-semibold text-sm uppercase tracking-wider mb-4">
-              Company
+              {t("nav.aboutUs")}
             </h3>
             <ul className="space-y-3">
               {footerNavigation.company.map((item) => (
@@ -102,7 +104,7 @@ export default function Footer() {
           {/* Network */}
           <div>
             <h3 className="font-subheading font-semibold text-sm uppercase tracking-wider mb-4">
-              Global Network
+              {t("nav.globalNetwork")}
             </h3>
             <ul className="space-y-3">
               {footerNavigation.network.map((item) => (
@@ -135,7 +137,7 @@ export default function Footer() {
 
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-gray-400">
-              © {new Date().getFullYear()} GBPL Co., Ltd. All rights reserved.
+              © {new Date().getFullYear()} GBPL Co., Ltd. {t("footer.rights")}
             </p>
             <div className="flex items-center gap-4">
               <a
