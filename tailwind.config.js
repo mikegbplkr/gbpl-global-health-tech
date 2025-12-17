@@ -51,6 +51,18 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // GBPL Custom Colors
+        navy: "#0A2540",
+        teal: "#2D9CDB",
+        coral: "#FF6B6B",
+        charcoal: "#2C3E50",
+        "off-white": "#FAF9F7",
+      },
+      fontFamily: {
+        display: ['Syne', 'sans-serif'],
+        subheading: ['Space Grotesk', 'sans-serif'],
+        body: ['Manrope', 'sans-serif'],
+        mono: ['JetBrains Mono', 'monospace'],
       },
       borderRadius: {
         lg: "var(--radius)",

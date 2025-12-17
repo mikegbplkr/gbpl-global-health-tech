@@ -1,46 +1,77 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,900&family=Space+Grotesk:wght@700&family=Newsreader:wght@400;500&family=JetBrains+Mono:wght@500&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
 @layer base {
   :root {
-    /* GBPL Custom Colors */
-    --charcoal: 0 0% 10%;
-    --cream: 36 33% 96%;
-    --teal: 180 71% 20%;
-    --burnt-orange: 16 66% 50%;
+    /* GBPL Color System */
+    --navy: 213 76% 15%;
+    --teal: 201 70% 52%;
+    --coral: 0 100% 71%;
+    --off-white: 40 33% 98%;
+    --charcoal: 210 29% 24%;
     
-    --background: 36 33% 96%;
-    --foreground: 0 0% 10%;
+    --background: 40 33% 98%;
+    --foreground: 210 29% 24%;
 
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 10%;
+    --card-foreground: 210 29% 24%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 10%;
+    --popover-foreground: 210 29% 24%;
 
-    --primary: 180 71% 20%;
-    --primary-foreground: 36 33% 96%;
+    --primary: 213 76% 15%;
+    --primary-foreground: 40 33% 98%;
 
-    --secondary: 0 0% 10%;
-    --secondary-foreground: 36 33% 96%;
+    --secondary: 201 70% 52%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 36 20% 90%;
-    --muted-foreground: 0 0% 40%;
+    --muted: 210 20% 96%;
+    --muted-foreground: 210 15% 50%;
 
-    --accent: 16 66% 50%;
-    --accent-foreground: 36 33% 96%;
+    --accent: 0 100% 71%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 36 33% 96%;
+    --destructive-foreground: 210 40% 98%;
 
-    --border: 0 0% 85%;
-    --input: 0 0% 85%;
-    --ring: 180 71% 20%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 201 70% 52%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 213 76% 15%;
+    --foreground: 40 33% 98%;
+
+    --card: 213 60% 12%;
+    --card-foreground: 40 33% 98%;
+
+    --popover: 213 60% 12%;
+    --popover-foreground: 40 33% 98%;
+
+    --primary: 40 33% 98%;
+    --primary-foreground: 213 76% 15%;
+
+    --secondary: 201 70% 52%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 213 50% 20%;
+    --muted-foreground: 210 20% 70%;
+
+    --accent: 0 100% 71%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 213 40% 25%;
+    --input: 213 40% 25%;
+    --ring: 201 70% 52%;
   }
 }
 
@@ -49,41 +80,108 @@
     @apply border-border;
   }
   body {
-    @apply bg-[#F8F6F3] text-[#1A1A1D] antialiased;
-    font-family: 'Newsreader', serif;
+    @apply bg-background text-foreground;
+    font-family: 'Manrope', sans-serif;
   }
-  
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Fraunces', serif;
-    font-weight: 900;
-  }
-  
-  .font-display {
-    font-family: 'Fraunces', serif;
-    font-weight: 900;
-  }
-  
-  .font-heading {
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 700;
-  }
-  
-  .font-body {
-    font-family: 'Newsreader', serif;
-  }
-  
-  .font-mono {
-    font-family: 'JetBrains Mono', monospace;
-    font-weight: 500;
+    font-family: 'Syne', sans-serif;
   }
 }
 
 @layer utilities {
-  .noise-texture {
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+  .font-display {
+    font-family: 'Syne', sans-serif;
   }
-  
-  .gradient-mesh {
-    background: linear-gradient(135deg, #0A5F5F 0%, #1A1A1D 100%);
+  .font-subheading {
+    font-family: 'Space Grotesk', sans-serif;
   }
+  .font-body {
+    font-family: 'Manrope', sans-serif;
+  }
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .text-navy {
+    color: #0A2540;
+  }
+  .text-teal {
+    color: #2D9CDB;
+  }
+  .text-coral {
+    color: #FF6B6B;
+  }
+  .bg-navy {
+    background-color: #0A2540;
+  }
+  .bg-teal {
+    background-color: #2D9CDB;
+  }
+  .bg-coral {
+    background-color: #FF6B6B;
+  }
+  .bg-off-white {
+    background-color: #FAF9F7;
+  }
+  .border-teal {
+    border-color: #2D9CDB;
+  }
+  .hover\:bg-teal-dark:hover {
+    background-color: #2589c4;
+  }
+  .gradient-hero {
+    background: linear-gradient(135deg, #0A2540 0%, #1a3a5c 100%);
+  }
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pulse-marker {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+.pulse-marker {
+  animation: pulse-marker 2s ease-in-out infinite;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FAF9F7;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2D9CDB;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2589c4;
 }
