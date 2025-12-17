@@ -3,6 +3,7 @@ import { Building2, CheckCircle2, Globe2, Users, FileCheck } from "lucide-react"
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const networkHubs = [
   {
@@ -72,6 +73,8 @@ const networkHubs = [
 ];
 
 export default function PoCNetworkPage() {
+  const { t } = useLanguage();
+
   return (
     <Layout>
       {/* Hero Section */}
@@ -90,14 +93,13 @@ export default function PoCNetworkPage() {
             className="text-center"
           >
             <span className="inline-block px-4 py-2 bg-teal/20 text-teal rounded-full text-sm font-medium mb-6">
-              Global Network
+              {t("pocnetwork.hero.badge")}
             </span>
             <h1 className="font-display text-4xl sm:text-5xl font-bold text-white mb-6">
-              PoC Network Overview
+              {t("pocnetwork.hero.title")}
             </h1>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Exclusive partnerships with national and public healthcare institutions 
-              across three strategic regions for clinical validation and market entry.
+              {t("pocnetwork.hero.description")}
             </p>
           </motion.div>
         </div>

@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/select";
 import Layout from "@/components/layout/Layout";
 import GoogleMap from "@/components/ui/GoogleMap";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 // Seoul Global Marketing Center coordinates
 const OFFICE_LOCATION = {
@@ -36,18 +37,19 @@ const contactSchema = z.object({
 
 type ContactFormData = z.infer<typeof contactSchema>;
 
-const inquiryTypes = [
-  { value: "sme-partnership", label: "SME Partnership Inquiry" },
-  { value: "global-partner", label: "Global Partner Inquiry" },
-  { value: "poc-request", label: "PoC Request" },
-  { value: "ai-platform", label: "AI Platform Demo" },
-  { value: "export-services", label: "Export Services" },
-  { value: "general", label: "General Inquiry" },
-];
-
 export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const { t } = useLanguage();
+
+  const inquiryTypes = [
+    { value: "sme-partnership", label: t("contact.inquiry.sme") },
+    { value: "global-partner", label: t("contact.inquiry.global") },
+    { value: "poc-request", label: t("contact.inquiry.poc") },
+    { value: "ai-platform", label: t("contact.inquiry.ai") },
+    { value: "export-services", label: t("contact.inquiry.export") },
+    { value: "general", label: t("contact.inquiry.general") },
+  ];
 
   const {
     register,
@@ -87,14 +89,13 @@ export default function ContactPage() {
             className="text-center"
           >
             <span className="inline-block px-4 py-2 bg-teal/20 text-teal rounded-full text-sm font-medium mb-6">
-              Get in Touch
+              {t("contact.hero.badge")}
             </span>
             <h1 className="font-display text-4xl sm:text-5xl font-bold text-white mb-6">
-              Contact Us
+              {t("contact.hero.title")}
             </h1>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Ready to accelerate your global market entry? Let's discuss how GBPL 
-              can support your health tech export journey.
+              {t("contact.hero.description")}
             </p>
           </motion.div>
         </div>
@@ -112,7 +113,7 @@ export default function ContactPage() {
               transition={{ duration: 0.6 }}
             >
               <h2 className="font-display text-2xl font-bold text-navy mb-6">
-                Send Us a Message
+                {t("contact.form.heading")}
               </h2>
 
               {isSubmitted ? (
@@ -125,23 +126,23 @@ export default function ContactPage() {
                     <CheckCircle2 className="w-8 h-8 text-green-600" />
                   </div>
                   <h3 className="font-display text-xl font-bold text-navy mb-2">
-                    Thank You!
+                    {t("contact.form.success.title")}
                   </h3>
                   <p className="text-gray-600 mb-6">
-                    Your message has been sent successfully. We'll get back to you within 24-48 hours.
+                    {t("contact.form.success.message")}
                   </p>
                   <Button onClick={() => setIsSubmitted(false)} variant="outline">
-                    Send Another Message
+                    {t("contact.form.success.button")}
                   </Button>
                 </motion.div>
               ) : (
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <Label htmlFor="name">Full Name *</Label>
+                      <Label htmlFor="name">{t("contact.form.name.label")}</Label>
                       <Input
                         id="name"
-                        placeholder="John Doe"
+                        placeholder={t("contact.form.name.placeholder")}
                         {...register("name")}
                         className={errors.name ? "border-red-500 focus:ring-red-500" : "focus:ring-teal focus:border-teal"}
                       />
@@ -151,11 +152,11 @@ export default function ContactPage() {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="email">Email Address *</Label>
+                      <Label htmlFor="email">{t("contact.form.email.label")}</Label>
                       <Input
                         id="email"
                         type="email"
-                        placeholder="john@company.com"
+                        placeholder={t("contact.form.email.placeholder")}
                         {...register("email")}
                         className={errors.email ? "border-red-500 focus:ring-red-500" : "focus:ring-teal focus:border-teal"}
                       />
@@ -167,10 +168,10 @@ export default function ContactPage() {
 
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <Label htmlFor="company">Company Name *</Label>
+                      <Label htmlFor="company">{t("contact.form.company.label")}</Label>
                       <Input
                         id="company"
-                        placeholder="Your Company"
+                        placeholder={t("contact.form.company.placeholder")}
                         {...register("company")}
                         className={errors.company ? "border-red-500 focus:ring-red-500" : "focus:ring-teal focus:border-teal"}
                       />
@@ -180,10 +181,10 @@ export default function ContactPage() {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="inquiryType">Inquiry Type *</Label>
+                      <Label htmlFor="inquiryType">{t("contact.form.inquiryType.label")}</Label>
                       <Select onValueChange={(value) => setValue("inquiryType", value)}>
                         <SelectTrigger className={errors.inquiryType ? "border-red-500" : ""}>
-                          <SelectValue placeholder="Select inquiry type" />
+                          <SelectValue placeholder={t("contact.form.inquiryType.placeholder")} />
                         </SelectTrigger>
                         <SelectContent>
                           {inquiryTypes.map((type) => (
@@ -200,10 +201,10 @@ export default function ContactPage() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="message">Message *</Label>
+                    <Label htmlFor="message">{t("contact.form.message.label")}</Label>
                     <Textarea
                       id="message"
-                      placeholder="Tell us about your project or inquiry..."
+                      placeholder={t("contact.form.message.placeholder")}
                       rows={6}
                       {...register("message")}
                       className={errors.message ? "border-red-500 focus:ring-red-500" : "focus:ring-teal focus:border-teal"}
@@ -222,12 +223,12 @@ export default function ContactPage() {
                     {isSubmitting ? (
                       <>
                         <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                        Sending...
+                        {t("contact.form.submitting.text")}
                       </>
                     ) : (
                       <>
                         <Send className="w-4 h-4 mr-2" />
-                        Send Message
+                        {t("contact.form.submit.text")}
                       </>
                     )}
                   </Button>
@@ -243,7 +244,7 @@ export default function ContactPage() {
               transition={{ duration: 0.6 }}
             >
               <h2 className="font-display text-2xl font-bold text-navy mb-6">
-                Contact Information
+                {t("contact.info.heading")}
               </h2>
 
               <div className="space-y-6 mb-8">
@@ -252,10 +253,9 @@ export default function ContactPage() {
                     <MapPin className="w-6 h-6 text-teal" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-navy mb-1">Office Location</h3>
+                    <h3 className="font-semibold text-navy mb-1">{t("contact.info.address.label")}</h3>
                     <p className="text-gray-600">
-                      Seoul Global Marketing Center<br />
-                      Seoul, South Korea
+                      {t("contact.info.address.value")}
                     </p>
                   </div>
                 </div>
@@ -265,7 +265,7 @@ export default function ContactPage() {
                     <Mail className="w-6 h-6 text-teal" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-navy mb-1">Email</h3>
+                    <h3 className="font-semibold text-navy mb-1">{t("contact.info.email.label")}</h3>
                     <a href="mailto:contact@gbpl.co.kr" className="text-teal hover:underline">
                       contact@gbpl.co.kr
                     </a>
@@ -277,7 +277,7 @@ export default function ContactPage() {
                     <Phone className="w-6 h-6 text-teal" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-navy mb-1">Phone</h3>
+                    <h3 className="font-semibold text-navy mb-1">{t("contact.info.phone.label")}</h3>
                     <a href="tel:+82-2-1234-5678" className="text-teal hover:underline">
                       +82-2-1234-5678
                     </a>
@@ -314,20 +314,12 @@ export default function ContactPage() {
 
               {/* Business Hours */}
               <div className="mt-8 bg-gray-50 rounded-xl p-6">
-                <h3 className="font-semibold text-navy mb-4">Business Hours</h3>
+                <h3 className="font-semibold text-navy mb-4">{t("contact.info.hours.label")}</h3>
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Monday - Friday</span>
-                    <span className="text-navy font-medium">9:00 AM - 6:00 PM KST</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">Saturday - Sunday</span>
-                    <span className="text-gray-500">Closed</span>
+                    <span className="text-gray-600">{t("contact.info.hours.value")}</span>
                   </div>
                 </div>
-                <p className="text-xs text-gray-500 mt-4">
-                  * We typically respond to inquiries within 24-48 business hours
-                </p>
               </div>
             </motion.div>
           </div>

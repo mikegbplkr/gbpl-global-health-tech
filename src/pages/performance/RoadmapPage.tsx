@@ -12,6 +12,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const roadmap2026 = [
   {
@@ -122,6 +123,8 @@ const centerUtilization = [
 ];
 
 export default function RoadmapPage() {
+  const { t } = useLanguage();
+
   return (
     <Layout>
       {/* Hero Section */}
@@ -140,14 +143,13 @@ export default function RoadmapPage() {
             className="text-center"
           >
             <span className="inline-block px-4 py-2 bg-teal/20 text-teal rounded-full text-sm font-medium mb-6">
-              Performance
+              {t("roadmap.hero.badge")}
             </span>
             <h1 className="font-display text-4xl sm:text-5xl font-bold text-white mb-6">
-              Roadmap & Commitment
+              {t("roadmap.hero.title")}
             </h1>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Our strategic roadmap for 2026-2027 export acceleration and commitment 
-              to supporting Seoul SMEs in their global expansion journey.
+              {t("roadmap.hero.description")}
             </p>
           </motion.div>
         </div>
@@ -167,7 +169,7 @@ export default function RoadmapPage() {
               <div className="mb-8">
                 <span className="font-mono text-6xl font-bold text-navy">2026</span>
                 <h2 className="font-display text-2xl font-bold text-navy mt-2">
-                  Foundation Strengthening & Expansion
+                  {t("roadmap.2026.title")}
                 </h2>
                 <div className="w-full h-1 bg-teal mt-4" />
               </div>
@@ -209,7 +211,7 @@ export default function RoadmapPage() {
               <div className="mb-8">
                 <span className="font-mono text-6xl font-bold text-teal">2027</span>
                 <h2 className="font-display text-2xl font-bold text-navy mt-2">
-                  Results Achievement & Establishment
+                  {t("roadmap.2027.title")}
                 </h2>
                 <div className="w-full h-1 bg-navy mt-4" />
               </div>
@@ -254,9 +256,9 @@ export default function RoadmapPage() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <span className="text-sm font-medium text-teal uppercase tracking-wider">Our Commitment</span>
+            <span className="text-sm font-medium text-teal uppercase tracking-wider">{t("roadmap.commitment.badge")}</span>
             <h2 className="font-display text-3xl sm:text-4xl font-bold text-navy mt-2 mb-4">
-              Key Milestones & Goals
+              {t("roadmap.commitment.title")}
             </h2>
           </motion.div>
 

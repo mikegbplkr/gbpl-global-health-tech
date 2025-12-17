@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Building2, Shield, Users, TrendingUp, ExternalLink } from "lucide-react";
 import Layout from "@/components/layout/Layout";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const projects = [
   {
@@ -107,6 +108,7 @@ const capabilities = [
 
 export default function TrackRecordPage() {
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
+  const { t } = useLanguage();
 
   return (
     <Layout>
@@ -126,14 +128,13 @@ export default function TrackRecordPage() {
             className="text-center"
           >
             <span className="inline-block px-4 py-2 bg-teal/20 text-teal rounded-full text-sm font-medium mb-6">
-              Performance
+              {t("trackrecord.hero.badge")}
             </span>
             <h1 className="font-display text-4xl sm:text-5xl font-bold text-white mb-6">
-              Track Record
+              {t("trackrecord.hero.title")}
             </h1>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Proven expertise through major enterprise projects with industry-leading clients, 
-              demonstrating our technical stability and execution capability.
+              {t("trackrecord.hero.description")}
             </p>
           </motion.div>
         </div>
@@ -174,9 +175,9 @@ export default function TrackRecordPage() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <span className="text-sm font-medium text-teal uppercase tracking-wider">Major Projects</span>
+            <span className="text-sm font-medium text-teal uppercase tracking-wider">{t("trackrecord.projects.badge")}</span>
             <h2 className="font-display text-3xl sm:text-4xl font-bold text-navy mt-2 mb-4">
-              Project Showcase
+              {t("trackrecord.projects.title")}
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               A selection of enterprise projects demonstrating our technical capabilities
@@ -267,9 +268,9 @@ export default function TrackRecordPage() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <span className="text-sm font-medium text-teal uppercase tracking-wider">Our Capabilities</span>
+            <span className="text-sm font-medium text-teal uppercase tracking-wider">{t("trackrecord.metrics.badge")}</span>
             <h2 className="font-display text-3xl sm:text-4xl font-bold text-navy mt-2 mb-4">
-              Proven Technical Expertise
+              {t("trackrecord.metrics.title")}
             </h2>
           </motion.div>
 

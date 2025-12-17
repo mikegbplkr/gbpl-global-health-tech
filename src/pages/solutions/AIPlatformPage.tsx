@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Brain, Activity, Cloud, ChevronDown, ChevronUp, Play, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/layout/Layout";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const features = [
   {
@@ -90,6 +91,7 @@ const comparisonData = [
 
 export default function AIPlatformPage() {
   const [expandedFeature, setExpandedFeature] = useState<string | null>("fatty-liver");
+  const { t } = useLanguage();
 
   return (
     <Layout>
@@ -109,20 +111,19 @@ export default function AIPlatformPage() {
             className="text-center"
           >
             <span className="inline-block px-4 py-2 bg-teal/20 text-teal rounded-full text-sm font-medium mb-6">
-              Solutions
+              {t("aiplatform.hero.badge")}
             </span>
             <h1 className="font-display text-4xl sm:text-5xl font-bold text-white mb-6">
-              AI Medical Imaging Platform
+              {t("aiplatform.hero.title")}
             </h1>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-              Proprietary AI solutions for medical imaging analysis, developed with university hospital data 
-              and optimized for global deployment.
+              {t("aiplatform.hero.description")}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" className="bg-teal hover:bg-teal-dark">
-                Request Demo
+                {t("aiplatform.demo.cta")}
               </Button>
-              <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10">
+              <Button size="lg" variant="outline" className="border-white bg-white/10 text-white hover:bg-white/20">
                 <Play className="w-4 h-4 mr-2" />
                 Watch Overview
               </Button>
@@ -141,12 +142,12 @@ export default function AIPlatformPage() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <span className="text-sm font-medium text-teal uppercase tracking-wider">MCV V1 Platform</span>
+            <span className="text-sm font-medium text-teal uppercase tracking-wider">{t("aiplatform.products.badge")}</span>
             <h2 className="font-display text-3xl sm:text-4xl font-bold text-navy mt-2 mb-4">
-              AI-Powered Medical Imaging Solutions
+              {t("aiplatform.products.title")}
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Three integrated solutions designed for clinical environments worldwide
+              {t("aiplatform.subtitle")}
             </p>
           </motion.div>
 
@@ -250,9 +251,9 @@ export default function AIPlatformPage() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <span className="text-sm font-medium text-teal uppercase tracking-wider">Comparison</span>
+            <span className="text-sm font-medium text-teal uppercase tracking-wider">{t("aiplatform.features.badge")}</span>
             <h2 className="font-display text-3xl sm:text-4xl font-bold text-navy mt-2 mb-4">
-              Why Choose GBPL Platform?
+              {t("aiplatform.features.title")}
             </h2>
           </motion.div>
 

@@ -12,6 +12,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const servicePillars = [
   {
@@ -82,6 +83,7 @@ const servicePillars = [
 
 export default function ExportServicesPage() {
   const [expandedPillar, setExpandedPillar] = useState<string | null>("poc");
+  const { t } = useLanguage();
 
   return (
     <Layout>
@@ -101,13 +103,13 @@ export default function ExportServicesPage() {
             className="text-center"
           >
             <span className="inline-block px-4 py-2 bg-teal/20 text-teal rounded-full text-sm font-medium mb-6">
-              Solutions
+              {t("exportservices.hero.badge")}
             </span>
             <h1 className="font-display text-4xl sm:text-5xl font-bold text-white mb-6">
-              Export Support Services
+              {t("exportservices.hero.title")}
             </h1>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              The 4 Pillars of comprehensive export enablement for Korean medical device and health tech SMEs
+              {t("exportservices.hero.description")}
             </p>
           </motion.div>
         </div>
@@ -123,9 +125,9 @@ export default function ExportServicesPage() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <span className="text-sm font-medium text-teal uppercase tracking-wider">Core Services</span>
+            <span className="text-sm font-medium text-teal uppercase tracking-wider">{t("exportservices.pillars.badge")}</span>
             <h2 className="font-display text-3xl sm:text-4xl font-bold text-navy mt-2 mb-4">
-              4 Pillars of Export Support
+              {t("exportservices.pillars.title")}
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               GBPL leverages its AI and IT background to provide crucial services that conventional consultants or pure AI firms cannot
@@ -288,7 +290,7 @@ export default function ExportServicesPage() {
               </div>
               <Button asChild size="lg" className="mt-8 bg-teal hover:bg-teal-dark">
                 <Link to="/contact">
-                  Start Your Export Journey
+                  {t("exportservices.cta.button")}
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>

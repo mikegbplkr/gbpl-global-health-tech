@@ -3,6 +3,7 @@ import { Quote, TrendingUp, Clock, CheckCircle2, ArrowRight } from "lucide-react
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const caseStudies = [
   {
@@ -89,6 +90,8 @@ const caseStudies = [
 ];
 
 export default function SuccessStoriesPage() {
+  const { t } = useLanguage();
+
   return (
     <Layout>
       {/* Hero Section */}
@@ -107,14 +110,13 @@ export default function SuccessStoriesPage() {
             className="text-center"
           >
             <span className="inline-block px-4 py-2 bg-teal/20 text-teal rounded-full text-sm font-medium mb-6">
-              Global Network
+              {t("successstories.hero.badge")}
             </span>
             <h1 className="font-display text-4xl sm:text-5xl font-bold text-white mb-6">
-              Success Stories
+              {t("successstories.hero.title")}
             </h1>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Real results from our global PoC network partnerships, 
-              demonstrating the power of integrated export enablement.
+              {t("successstories.hero.description")}
             </p>
           </motion.div>
         </div>

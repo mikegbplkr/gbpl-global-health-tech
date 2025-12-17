@@ -3,102 +3,7 @@ import { motion } from "framer-motion";
 import { Brain, Globe2, TrendingUp, CheckCircle2, Building2, Shield, Zap } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Layout from "@/components/layout/Layout";
-
-const strengthTabs = [
-  {
-    id: "technical",
-    label: "Technical Foundation",
-    icon: Brain,
-    content: {
-      title: "University Hospital-Grade AI Technology",
-      description: "Proven AI model development based on university hospital data and stability from large-scale IT/SI projects.",
-      features: [
-        {
-          title: "Proprietary AI Models",
-          description: "Fatty liver diagnosis and chest X-ray analysis algorithms developed with clinical data",
-          icon: Brain,
-        },
-        {
-          title: "Enterprise-Grade Infrastructure",
-          description: "Scalable SaaS platform optimized for overseas deployment and technical verification",
-          icon: Shield,
-        },
-        {
-          title: "Continuous Improvement",
-          description: "Algorithm enhancement based on real clinical feedback from overseas medical staff",
-          icon: Zap,
-        },
-      ],
-      stats: [
-        { label: "AI Models Deployed", value: "3+" },
-        { label: "Clinical Data Points", value: "100K+" },
-        { label: "Accuracy Rate", value: "95%+" },
-      ],
-    },
-  },
-  {
-    id: "global",
-    label: "Global Reach",
-    icon: Globe2,
-    content: {
-      title: "Exclusive 3-Hub PoC Network",
-      description: "Direct partnerships with national and public healthcare institutions across three strategic regions.",
-      features: [
-        {
-          title: "UK - European Gateway",
-          description: "Bristol NHS collaboration with 60%+ AI adoption rate, brain tumor AI project discussions",
-          icon: Globe2,
-        },
-        {
-          title: "Chile - LatAm Bridgehead",
-          description: "BIOANDINA SPA & Ministry of Health MOU for government-led healthcare digitalization",
-          icon: Globe2,
-        },
-        {
-          title: "Brazil - Major Market",
-          description: "Local medical institution partnerships with ANVISA registration support",
-          icon: Globe2,
-        },
-      ],
-      stats: [
-        { label: "Global Hubs", value: "3" },
-        { label: "Partner Institutions", value: "5+" },
-        { label: "Active PoCs", value: "4" },
-      ],
-    },
-  },
-  {
-    id: "financial",
-    label: "Financial Stability",
-    icon: TrendingUp,
-    content: {
-      title: "Proven Growth & Stable Cash Flow",
-      description: "Strong financial foundation with explosive growth and stable enterprise client base.",
-      features: [
-        {
-          title: "Revenue Growth",
-          description: "52% year-over-year growth from KRW 1.23B (2023) to KRW 1.88B (2024)",
-          icon: TrendingUp,
-        },
-        {
-          title: "Enterprise Clients",
-          description: "Major IT/SI projects with AIA Life, Kyobo Book Centre, Hyundai Motor Group",
-          icon: Building2,
-        },
-        {
-          title: "Team Expansion",
-          description: "166% workforce growth from 6 to 16 employees, demonstrating scaling capability",
-          icon: CheckCircle2,
-        },
-      ],
-      stats: [
-        { label: "2024 Revenue", value: "₩1.88B" },
-        { label: "YoY Growth", value: "52%" },
-        { label: "Team Size", value: "16" },
-      ],
-    },
-  },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const differentiators = [
   {
@@ -120,6 +25,103 @@ const differentiators = [
 
 export default function OurStrengthPage() {
   const [activeTab, setActiveTab] = useState("technical");
+  const { t } = useLanguage();
+
+  const strengthTabs = [
+    {
+      id: "technical",
+      label: t("strength.tab.technical"),
+      icon: Brain,
+      content: {
+        title: t("strength.tab.technical.title"),
+        description: t("strength.tab.technical.description"),
+        features: [
+          {
+            title: t("strength.feature.aiModels"),
+            description: t("strength.feature.aiModels.desc"),
+            icon: Brain,
+          },
+          {
+            title: t("strength.feature.infrastructure"),
+            description: t("strength.feature.infrastructure.desc"),
+            icon: Shield,
+          },
+          {
+            title: t("strength.feature.improvement"),
+            description: t("strength.feature.improvement.desc"),
+            icon: Zap,
+          },
+        ],
+        stats: [
+          { label: t("strength.stat.aiModels"), value: "3+" },
+          { label: t("strength.stat.dataPoints"), value: "100K+" },
+          { label: t("strength.stat.accuracy"), value: "95%+" },
+        ],
+      },
+    },
+    {
+      id: "global",
+      label: t("strength.tab.global"),
+      icon: Globe2,
+      content: {
+        title: t("strength.tab.global.title"),
+        description: t("strength.tab.global.description"),
+        features: [
+          {
+            title: t("strength.feature.uk"),
+            description: t("strength.feature.uk.desc"),
+            icon: Globe2,
+          },
+          {
+            title: t("strength.feature.chile"),
+            description: t("strength.feature.chile.desc"),
+            icon: Globe2,
+          },
+          {
+            title: t("strength.feature.brazil"),
+            description: t("strength.feature.brazil.desc"),
+            icon: Globe2,
+          },
+        ],
+        stats: [
+          { label: t("strength.stat.globalHubs"), value: "3" },
+          { label: t("strength.stat.partners"), value: "5+" },
+          { label: t("strength.stat.activePocs"), value: "4" },
+        ],
+      },
+    },
+    {
+      id: "financial",
+      label: t("strength.tab.financial"),
+      icon: TrendingUp,
+      content: {
+        title: t("strength.tab.financial.title"),
+        description: t("strength.tab.financial.description"),
+        features: [
+          {
+            title: t("strength.feature.revenue"),
+            description: t("strength.feature.revenue.desc"),
+            icon: TrendingUp,
+          },
+          {
+            title: t("strength.feature.enterprise"),
+            description: t("strength.feature.enterprise.desc"),
+            icon: Building2,
+          },
+          {
+            title: t("strength.feature.team"),
+            description: t("strength.feature.team.desc"),
+            icon: CheckCircle2,
+          },
+        ],
+        stats: [
+          { label: t("strength.stat.revenue2024"), value: "₩1.88B" },
+          { label: t("strength.stat.yoyGrowth"), value: "52%" },
+          { label: t("strength.stat.teamSize"), value: "16" },
+        ],
+      },
+    },
+  ];
 
   return (
     <Layout>
@@ -139,14 +141,13 @@ export default function OurStrengthPage() {
             className="text-center"
           >
             <span className="inline-block px-4 py-2 bg-teal/20 text-teal rounded-full text-sm font-medium mb-6">
-              About Us
+              {t("strength.hero.badge")}
             </span>
             <h1 className="font-display text-4xl sm:text-5xl font-bold text-white mb-6">
-              Our Strength
+              {t("strength.hero.title")}
             </h1>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              A unique fusion of technical stability, exclusive global access, 
-              and a clear public mission to support Seoul-based SMEs.
+              {t("strength.hero.description")}
             </p>
           </motion.div>
         </div>
